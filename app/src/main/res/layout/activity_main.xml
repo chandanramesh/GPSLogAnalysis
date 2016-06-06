@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#88aa65">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start"
+        android:id="@+id/start"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stop"
+        android:id="@+id/stop"
+        android:layout_below="@+id/start"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete Aiding Data"
+        android:id="@+id/delete"
+        android:layout_below="@+id/stop"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/start" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Select Providers"
+        android:id="@+id/textView2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GPS"
+        android:id="@+id/checkGps"
+        android:layout_below="@+id/textView2"
+        android:layout_alignStart="@+id/textView2" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Network"
+        android:id="@+id/checknetwork"
+        android:layout_below="@+id/checkGps"
+        android:layout_alignStart="@+id/checkGps" />
+
+
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="passive"
+        android:id="@+id/checkpassive"
+        android:layout_below="@+id/checknetwork"
+        android:layout_alignStart="@+id/checknetwork" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Log"
+        android:id="@+id/showlog"
+        android:layout_alignTop="@+id/processlog"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Process Logs"
+        android:id="@+id/processlog"
+        android:padding="5dp"
+        android:layout_marginLeft="@dimen/abc_switch_padding"
+        android:layout_marginRight="@dimen/abc_switch_padding"
+        android:layout_below="@+id/delete"
+        android:layout_alignStart="@+id/checkpassive"
+        android:layout_marginTop="40dp"
+        android:allowUndo="true" />
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/button_material_light"
+        android:padding="4.5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/tableRow">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ttff"
+            android:text="TTFF:"
+            android:textStyle="bold"
+            android:layout_column="0"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ttffvalue"
+            android:layout_column="1"
+            android:layout_weight="1"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/usedsv"
+            android:text="Used SV's:"
+            android:textIsSelectable="true"
+            android:textStyle="bold"
+            android:layout_column="2"
+            android:layout_weight="1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/usedsvvalue"
+            android:textStyle="bold"
+            android:layout_column="3"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fixcount"
+            android:text="Fix Count"
+            android:textStyle="bold"
+            android:layout_column="4"
+            android:layout_weight="1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fixcountvalue"
+            android:textStyle="bold"
+            android:layout_column="5"
+            android:layout_weight="1"/>
+    </TableRow>
+<TableLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_above="@+id/tableRow"
+    android:stretchColumns="4">
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#d8030303"
+        android:layout_above="@+id/tableRow"
+        android:id="@+id/latlongtable"
+        android:padding="15dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/latdisplay"
+                android:text="LATITUDE:"
+                android:textColor="#fcfbfb"
+                android:textStyle="bold"
+                android:layout_column="0"
+                android:layout_weight="1"
+                android:textSize="13dp"
+                />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/latdisplayvalue"
+            android:textColor="#fcfbfb"
+            android:textStyle="bold"
+            android:layout_column="1"
+            android:layout_weight="1"
+            android:textSize="11dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/longdisplay"
+            android:text="LONGITUDE:"
+            android:textColor="#fcfbfb"
+            android:textStyle="bold"
+            android:layout_column="2"
+            android:layout_weight="1"
+            android:textSize="13dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/longdisplayvalue"
+            android:textColor="#fcfbfb"
+            android:textStyle="bold"
+            android:layout_column="3"
+            android:layout_weight="1"
+            android:textSize="11dp"
+            />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#d8030303"
+        android:layout_below="@+id/latlongtable"
+        android:padding="15dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/accuracy"
+            android:text="Accuracy:"
+            android:textColor="#fcfbfb"
+            android:textStyle="bold"
+            android:layout_column="0"
+            android:layout_weight="1"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/accuracyvalue"
+            android:textColor="#fcfbfb"
+            android:textStyle="bold"
+            android:layout_column="1"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/altitude"
+            android:text="Altitude:"
+            android:textColor="#fcfbfb"
+            android:textStyle="bold"
+            android:layout_column="2"
+            android:layout_weight="1"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/altitudevalue"
+            android:textColor="#fcfbfb"
+            android:textStyle="bold"
+            android:layout_column="3"
+            android:layout_weight="1"
+            />
+    </TableRow>
+</TableLayout>
+</RelativeLayout>
