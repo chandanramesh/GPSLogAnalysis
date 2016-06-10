@@ -1,6 +1,7 @@
 package com.irail.chandansr.gpsloganalysis;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -35,7 +36,10 @@ public class LogProcessAcitivity extends AppCompatActivity {
         if( ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this,PERMISSIONS_STORAGE,1);
         }
-        File file = new File("/sdcard/Download/main.log");
+        Bundle bundle = getIntent().getExtras();
+        String path = bundle.getString("Path");
+        Log.d("Chandan",path);
+        File file = new File(path);
         //file.delete();
         //Log.d("Chandan",file.getAbsolutePath());
        // Log.d("Chandan",file.exists()+"");
@@ -48,9 +52,11 @@ public class LogProcessAcitivity extends AppCompatActivity {
             while(bufferedReader.ready()){
 
                String line = bufferedReader.readLine();
-                if(line.contains("startNavigating")){
+                if(line.contains("LgeGpsLocationProvider")|| line.contains("GpsLocationProvider")|| line.contains("LocationManagerService")){
                     Log.d("Chandan",line);
-                   arrayList.add(line.substring(54,70));
+                    if(line.contains("LocationManagerService: request") || line.contains("START NAVIGATION")||line.contains("setSUPLServerWithTLS")||line.contains("enableLocationTracking")
+                            ||line.contains("TTFF")||line.contains("LgeGpsIndicator: STATE_FIX")|| line.contains("incoming location")||line.contains("request_to_modem()"))
+                   arrayList.add(line.substring(32));
 
                 }
 

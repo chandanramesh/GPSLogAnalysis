@@ -1,13 +1,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto">
 	<item
-		android:id="@+id/action_favorite"
-		android:icon="@drawable/gpsicon"
+		android:id="@+id/play_pause"
+		android:icon="@drawable/play"
 		app:showAsAction="ifRoom"
-		android:title="Text"/>
+		android:title="Text" />
 	
 	<item
-	android:id="@+id/suplact"
-	android:title="SUPL Settings"
+	android:id="@+id/exitapp"
+	android:title="Exit"
 	app:showAsAction="never"/>
+
+	<item android:title="Delete_Aiding_Data"
+        android:id="@+id/deleteaidingdata"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/delete" />
 </menu>
