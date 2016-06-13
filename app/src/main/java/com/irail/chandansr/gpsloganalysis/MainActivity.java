@@ -116,19 +116,6 @@ public class MainActivity extends AppCompatActivity  implements LocationListener
 
                     }
                 }
-
-                if(position ==1){
-                    mLeftDrawer.setVisibility(View.GONE);
-                    FragmentManager fragmentManager = (FragmentManager)getFragmentManager();
-                    Fragment fragment = fragmentManager.findFragmentById(R.id.drawer_layout);
-                    if (fragment == null) {
-                        fragment = new TextViewFragment();
-                        fragmentManager.beginTransaction()
-                                .add(R.id.drawer_layout, fragment).addToBackStack("TestFrag")
-                                .commit();
-
-                    }
-                }
             }
         });
         mSelectlog.setOnClickListener(new View.OnClickListener() {
@@ -147,9 +134,11 @@ public class MainActivity extends AppCompatActivity  implements LocationListener
             ActivityCompat.requestPermissions( this, new String[] {  Manifest.permission.ACCESS_FINE_LOCATION  }, 1);
 
         }
-       // Intent gpsintent = new Intent(this,GpsStatusService.class);
-       // startService(gpsintent);
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION )== PackageManager.PERMISSION_GRANTED) {
+            Log.d(TAG , "Permissin Granted");
+            Log.d(TAG,checkgps.isChecked()+"");
+            Log.d(TAG,checknetwork.isChecked()+"");
+            Log.d(TAG,checkpassive.isChecked()+"");
 
             if(checkgps.isChecked()) {
                 item.setIcon(R.drawable.stop);
@@ -179,6 +168,7 @@ public class MainActivity extends AppCompatActivity  implements LocationListener
     @Override
     public void onLocationChanged(Location location) {
         mFixNo++;
+        gpsStatus = locationManager.getGpsStatus(gpsStatus);
         if(!mFirstfix){
             mTTFF= SystemClock.elapsedRealtime()-mStartTime;
             mFirstfix = true;
@@ -207,8 +197,6 @@ public class MainActivity extends AppCompatActivity  implements LocationListener
 
     }
     void stopgps(MenuItem item){
-       // Intent gpsintent = new Intent(this,GpsStatusService.class);
-      //  stopService(gpsintent);
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION )== PackageManager.PERMISSION_GRANTED) {
             item.setIcon(R.drawable.play);
             mIconChange= false;
